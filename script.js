@@ -50,31 +50,25 @@ submitButton.addEventListener('click', function() {
 });
 
 
+
 function renderBooks(){
     bookContainer.innerHTML = '';
 
     for (var i=0; i < myLibrary.length; i++){
-        var book = myLibrary[i];
+        const book = myLibrary[i];
 
-        var singleBook = document.createElement('div');
+        const singleBook = document.createElement('div');
 
-        var bookTitle = document.createElement('p');
-        bookTitle.classList.add('book-title');
-        bookTitle.textContent = book.title;
+        const bookTitle = createBookElement('p', 'book-title', book.title);
         singleBook.appendChild(bookTitle);
 
-        var bookAuthor = document.createElement('p');
-        bookAuthor.classList.add('book-title');
-        bookAuthor.textContent = book.author;
+        const bookAuthor = createBookElement('p', 'book-author', book.author);
         singleBook.appendChild(bookAuthor);
 
-        var bookPages = document.createElement('p');
-        bookPages.classList.add('book-title');
-        bookPages.textContent = book.pages;
+        const bookPages = createBookElement('p', 'book-pages', book.pages);
         singleBook.appendChild(bookPages);
 
-        var bookRead = document.createElement('p');
-        bookRead.classList.add('book-title');
+        const bookRead = createBookElement('p', 'book-read', book.read);
         bookRead.textContent = readOrNo(book.read)
         singleBook.appendChild(bookRead);
 
@@ -82,6 +76,14 @@ function renderBooks(){
         bookContainer.appendChild(singleBook);
     }
 };
+
+
+function createBookElement(elementType, className, textContent){
+    var bookElement = document.createElement(elementType);
+    bookElement.classList.add(className);
+    bookElement.textContent = textContent;
+    return bookElement;
+}
 
 function readOrNo(readValue){
     if (readValue === 'yes') {
