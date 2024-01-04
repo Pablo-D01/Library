@@ -1,5 +1,12 @@
 const submitButton = document.querySelector('button[type="submit"]');
 const bookContainer = document.querySelector('.books-container');
+const bookForm = document.getElementById('bookForm');
+
+
+
+bookForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Zatrzymuje domyślne zachowanie formularza (czyli odświeżanie strony)
+});
 
 const myLibrary = [
     {
@@ -39,7 +46,9 @@ function addBookToLibrary(){
 
 submitButton.addEventListener('click', function() {
     addBookToLibrary()
+    renderBooks()
 });
+
 
 function renderBooks(){
     bookContainer.innerHTML = '';
@@ -47,26 +56,30 @@ function renderBooks(){
     for (var i=0; i < myLibrary.length; i++){
         var book = myLibrary[i];
 
+        var singleBook = document.createElement('div');
+
         var bookTitle = document.createElement('p');
         bookTitle.classList.add('book-title');
         bookTitle.textContent = book.title;
-        bookContainer.appendChild(bookTitle);
+        singleBook.appendChild(bookTitle);
 
         var bookAuthor = document.createElement('p');
         bookAuthor.classList.add('book-title');
         bookAuthor.textContent = book.author;
-        bookContainer.appendChild(bookAuthor);
+        singleBook.appendChild(bookAuthor);
 
         var bookPages = document.createElement('p');
         bookPages.classList.add('book-title');
         bookPages.textContent = book.pages;
-        bookContainer.appendChild(bookPages);
+        singleBook.appendChild(bookPages);
 
         var bookRead = document.createElement('p');
         bookRead.classList.add('book-title');
         bookRead.textContent = readOrNo(book.read)
-        bookContainer.appendChild(bookRead);
+        singleBook.appendChild(bookRead);
 
+        singleBook.classList.add('singleBook');
+        bookContainer.appendChild(singleBook);
     }
 };
 
