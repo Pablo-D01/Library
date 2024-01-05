@@ -105,10 +105,11 @@ overlay.addEventListener('click', ()=>{
 } */
 
 function closeModal() {
-    modal.classList.toggle("open")
     overlay.classList.toggle('active')
+    // openBtn.classList.toggle("active")
+    modal.classList.toggle("open")
 }
-
+closeModal()
 
 
 

@@ -6,9 +6,10 @@
   body {
     margin: 0;
     font-family: Poppins, sans-serif;;
-
+    overflow: hidden;
   }
 
+  
 header{
   background-color: #333; 
 
@@ -60,23 +61,7 @@ header{
 }
 
   
-/* .singleBook {
-  height: auto;
-  background-color: #219EBC;
-  border-radius: 13px;
-  display: grid;
-  place-items: center; 
-  text-align: center;
-  padding: 1rem;
-  min-height: 100px;
-  max-height: 300px;
-  overflow: auto;
-  color: #fff; 
-  font-size: 1.5rem; 
-  margin-bottom: 8px;
-  column-gap: 5px;
-  overflow: hidden;
-} */
+
 
 .singleBook {
   background-color: #219EBC;
@@ -93,39 +78,100 @@ header{
     overflow: hidden;
   
 }
-  
-
-
-  
-
-  /* close/open form */
+.modal{
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.modal.open {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  z-index: 999;
+}
 
 .form-container {
-  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 1.5em;
+  background-color: #F0EEF1;
   opacity: 0;
   position: fixed;
-  top: 30%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: all 0.3s ease-in-out;
   z-index: -1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
+  padding: 1em;
   border-radius: 10px;
 }
+
+
+
+.form-container input{
+  cursor: text;
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 500;
+
+}
+
+.form-container button, input{
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+#addBookBtn{
+  width: 100%;
+  background-color: #9fff9c;
+  transition:  0.15s ease-in-out;
+  border-radius: 10px;
+  font-weight: 600;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  font-size: 1em;
+
+}
+#addBookBtn:hover{
+  background-color: #8FE58C;
+}
+
 
 #bookForm{
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--spacing-lg);
+  gap: 10px;
+  column-gap: 10px;
 }
-.modal.open {
-  opacity: 1;
-  z-index: 999;
+
+.haveRead{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 1em;
+  font-size: 1em;
+  font-weight: 600;
+}
+select {
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  background-color: #fff; 
+  font-size: 1em; 
+  color: #333; 
+  
+}
+
+select:focus {
+  outline: none; 
+  border-color: #219EBC; 
+  box-shadow: 0 0 5px rgba(33, 158, 188, 0.5);
 }
 
 #openModal{
@@ -146,6 +192,9 @@ header{
   background-color: #3333335a;
 }
 
+#openModal.active{
+  visibility: hidden;
+}
 
 .overlay {
   position: fixed;
