@@ -3,7 +3,8 @@ const bookContainer = document.querySelector('.books-container');
 const bookForm = document.getElementById('bookForm');
 const openBtn = document.getElementById('openModal');
 const closeBtn = document.getElementById('closeModal');
-const modal = document.getElementById('modal')
+const modal = document.getElementById('modal');
+const overlay = document.getElementById('overlay');
 
 
 bookForm.addEventListener('submit', function(event) {
@@ -95,18 +96,20 @@ openBtn.addEventListener("click", () =>{
     closeModal()
 });
 
+overlay.addEventListener('click', ()=>{
+    closeModal()
+} )
+
+/* function openModal(){
+    modal.classList.add("open")
+} */
+
 function closeModal() {
     modal.classList.toggle("open")
+    overlay.classList.toggle('active')
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.addEventListener('click', function(event) {
-        let isClickInsidePopup = openBtn.contains(event.target);
-        if (!isClickInsidePopup) {
-            closeModal();          
-        }
-    });
-});
+
 
 
 
