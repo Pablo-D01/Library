@@ -10,6 +10,11 @@
     display: grid;
     grid-template-rows: auto 1fr; 
     height: 100vh;
+    margin-top: var(--spacing-lg);
+    text-align: center;
+    max-width: var(--container-width);
+    padding: var(--spacing-lg);
+    margin: 0 auto;
   }
   
   .nav-bar {
@@ -18,38 +23,70 @@
     padding: 1rem;
   }
   
-  .form-container {
-    background-color: aqua;
-    display: grid;
-    grid-template-columns: 1fr;
-    align-content: space-evenly;
-    justify-content: space-between;
-    justify-items: center;
-    align-items: center;
-    height: 10vh;
-    width: 100%;
-    position: sticky; 
-    top: 0;
-    z-index: 2; 
-  }
   
   .books-container {
+    background-color: red;
+    margin: 1em;
+    height: auto;
+    grid-column: 1/2;
     display: grid;
-    background-color: blueviolet;
-    grid-template-columns: 1fr;
-    overflow-y: auto; 
-  }
+    gap: 1rem 1rem;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: auto;
+}
+
   
-  .singleBook {
-    background-color: #219EBC;
-    border: 1px solid black;
-    border-radius: 13px;
-    display: grid;
-    text-align: center;
-    padding: 1rem 1rem 0;
-    overflow: auto;
-    min-height: 100px;
-    max-height: 300px;
-    width: auto;
-  }
+.singleBook {
+  height: auto;
+  background-color: #219EBC;
+  border-radius: 13px;
+  display: grid;
+  place-items: center; 
+  text-align: center;
+  padding: 1rem;
+  min-height: 100px;
+  max-height: 300px;
+  overflow: auto;
+  color: #fff; 
+  font-size: 1.5rem; 
+  margin-bottom: 8px;
+  column-gap: 5px;
+  overflow: hidden;
+}
   
+
+  /* close/open form */
+
+.form-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#bookForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+.modal.open {
+  opacity: 1;
+  z-index: 999;
+}
+
+#openModal{
+  font-size: 24px;
+  font-weight: 600;
+}

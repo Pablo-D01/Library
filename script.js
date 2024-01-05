@@ -1,7 +1,9 @@
 const submitButton = document.querySelector('button[type="submit"]');
 const bookContainer = document.querySelector('.books-container');
 const bookForm = document.getElementById('bookForm');
-
+const openBtn = document.getElementById('openModal');
+const closeBtn = document.getElementById('closeModal');
+const modal = document.getElementById('modal')
 
 
 bookForm.addEventListener('submit', function(event) {
@@ -47,9 +49,15 @@ function addBookToLibrary(){
 };
 
 submitButton.addEventListener('click', function() {
+    if (condition) {
+        
+    } else {
+        
+    }
     addBookToLibrary()
     renderBooks()
 });
+
 
 
 
@@ -94,6 +102,19 @@ function readOrNo(readValue){
         return 'Not read';
     }
 }
+
+
+// close/open form
+openBtn.addEventListener("click", () =>{
+    closeModal()
+});
+
+function closeModal() {
+    modal.classList.toggle("open")
+}
+
+
+
 
 renderBooks()
 
