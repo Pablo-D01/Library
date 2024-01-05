@@ -49,15 +49,55 @@ function addBookToLibrary(){
 };
 
 submitButton.addEventListener('click', function() {
-    if (condition) {
-        
+    if (validateForm()) {
+        addBookToLibrary()
+        renderBooks()
+        clearForm()
+        closeModal()
     } else {
         
     }
-    addBookToLibrary()
-    renderBooks()
 });
 
+
+
+function validateForm() {
+    const titleInput = document.getElementById('title');
+    const authorInput = document.getElementById('author');
+    const pagesInput = document.getElementById('pages');
+
+    if (titleInput.value.trim() === '' || authorInput.value.trim() === '' || pagesInput.value.trim() === '') {
+        alert('Please complete all form fields.');
+        return false;
+    }
+
+    if (parseInt(pagesInput.value) <= 0) {
+        alert('Liczba stron musi być dodatnia.');
+        return false;
+    }
+    return true;
+}
+
+function clearForm() {
+    const titleInput = document.getElementById('title');
+    const authorInput = document.getElementById('author');
+    const pagesInput = document.getElementById('pages');
+    const readSelect = document.getElementById('read');
+
+    titleInput.value = '';
+    authorInput.value = '';
+    pagesInput.value = '';
+    readSelect.value = 'Not'; 
+}
+
+// close/open form
+openBtn.addEventListener("click", () =>{
+    closeModal()
+});
+
+function closeModal() {
+    modal.classList.toggle("open")
+}
 
 
 
@@ -104,14 +144,7 @@ function readOrNo(readValue){
 }
 
 
-// close/open form
-openBtn.addEventListener("click", () =>{
-    closeModal()
-});
 
-function closeModal() {
-    modal.classList.toggle("open")
-}
 
 
 
