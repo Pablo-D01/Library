@@ -99,6 +99,15 @@ function closeModal() {
     modal.classList.toggle("open")
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('click', function(event) {
+        let isClickInsidePopup = openBtn.contains(event.target);
+        if (!isClickInsidePopup) {
+            closeModal();          
+        }
+    });
+});
+
 
 
 function renderBooks(){
