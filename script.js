@@ -191,9 +191,12 @@ function readOrNo(readValue){
 } */
 
 function removeBook(bookId) {
-    console.log(bookId)
-    myLibrary = myLibrary.splice(bookId, 1)
-
+    // console.log(bookId)
+    const bookToRemove = myLibrary.findIndex(book => book.id === bookId);
+    console.log(bookToRemove)
+    myLibrary.splice(bookToRemove, 1);
+    console.log(myLibrary)
+    renderBooks()
 }
 
 

@@ -103,7 +103,9 @@ header{
   border-radius: 10px;
 }
 
-
+.form-container h2{
+  margin-top: 0px;
+}
 
 .form-container input{
   cursor: text;
@@ -205,6 +207,8 @@ select:focus {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+
 }
 
 .overlay.active {
