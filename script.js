@@ -11,7 +11,7 @@ bookForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Zatrzymuje domyślne zachowanie formularza (czyli odświeżanie strony)
 });
 
-const myLibrary = [
+let  myLibrary = [
     {
         id:1,
         title:'The Hobbit',
@@ -24,6 +24,13 @@ const myLibrary = [
         },
     }
 ];
+
+/* let  myLibrary = [
+ 
+]; */
+
+
+
 
 
 
@@ -38,6 +45,10 @@ function Book(id,title, author, pages, read) {
         // console.log;(this.title)
     };
   };
+
+ /*  new Book(1,'The Hobbit','J.R.R. Tolkien','295','not');
+  const firstBook = new Book(1,'The Hobbit','J.R.R. Tolkien','295','not');
+  myLibrary.push(firstBook); */
 
 function addBookToLibrary(){
     console.log('taking data...')
@@ -122,6 +133,7 @@ function renderBooks(){
         const book = myLibrary[i];
 
         const singleBook = document.createElement('div');
+        singleBook.setAttribute('data-id', book.id);
 
         const bookTitle = createBookElement('p', 'book-title', book.title);
         singleBook.appendChild(bookTitle);
@@ -140,10 +152,15 @@ function renderBooks(){
         bookContainer.appendChild(singleBook);
 
         const readBtn = createBookElement('button', 'read-btn', readOrNo(book.read));
+        readBtn.setAttribute('data-id', book.id);
         singleBook.appendChild(readBtn);
 
         const removeBtn = createBookElement('button', 'remove-btn', 'remove');
+        removeBtn.setAttribute('data-id', book.id);
         singleBook.appendChild(removeBtn);
+        removeBtn.addEventListener("click", () =>{
+            removeBook(book.id)
+        });
     }
 };
 
@@ -166,8 +183,17 @@ function readOrNo(readValue){
 
 
 
-function removeBook() {
+/* function removeBook(button) {
+    const dataId = button.getAttribute('data-id');
+    console.log(dataId);
+    // const indexToRemove = myLibrary.findIndex(book => book.id === bookIdToRemove);
     
+} */
+
+function removeBook(bookId) {
+    console.log(bookId)
+    myLibrary = myLibrary.splice(bookId, 1)
+
 }
 
 
