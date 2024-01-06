@@ -13,6 +13,7 @@ bookForm.addEventListener('submit', function(event) {
 
 const myLibrary = [
     {
+        id:1,
         title:'The Hobbit',
         author:'J.R.R. Tolkien',
         pages:'295',
@@ -26,7 +27,8 @@ const myLibrary = [
 
 
 
-function Book(title, author, pages, read) {
+function Book(id,title, author, pages, read) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -43,8 +45,8 @@ function addBookToLibrary(){
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
     const read = document.getElementById('read').value.toLowerCase();
-
-    const newBook = new Book(title,author,pages,read);
+    const id = myLibrary.length + 1;
+    const newBook = new Book(id,title,author,pages,read);
     myLibrary.push(newBook);
     console.log(title, 'should be in library!')
 };
@@ -109,7 +111,6 @@ function closeModal() {
     // openBtn.classList.toggle("active")
     modal.classList.toggle("open")
 }
-closeModal()
 
 
 
@@ -137,6 +138,12 @@ function renderBooks(){
 
         singleBook.classList.add('singleBook');
         bookContainer.appendChild(singleBook);
+
+        const readBtn = createBookElement('button', 'read-btn', readOrNo(book.read));
+        singleBook.appendChild(readBtn);
+
+        const removeBtn = createBookElement('button', 'remove-btn', 'remove');
+        singleBook.appendChild(removeBtn);
     }
 };
 
@@ -159,7 +166,9 @@ function readOrNo(readValue){
 
 
 
-
+function removeBook() {
+    
+}
 
 
 renderBooks()
