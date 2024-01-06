@@ -42,7 +42,6 @@ function Book(id,title, author, pages, read) {
     this.read = read;
     this.info = function() {
         console.log(this.title,'by',this.author,',', this.pages,'pages,', this.read)
-        // console.log;(this.title)
     };
   };
 
@@ -51,7 +50,6 @@ function Book(id,title, author, pages, read) {
   myLibrary.push(firstBook); */
 
 function addBookToLibrary(){
-    console.log('taking data...')
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
@@ -59,7 +57,6 @@ function addBookToLibrary(){
     const id = myLibrary.length + 1;
     const newBook = new Book(id,title,author,pages,read);
     myLibrary.push(newBook);
-    console.log(title, 'should be in library!')
 };
 
 submitButton.addEventListener('click', function() {
@@ -154,6 +151,9 @@ function renderBooks(){
         const readBtn = createBookElement('button', 'read-btn', readOrNo(book.read));
         readBtn.setAttribute('data-id', book.id);
         singleBook.appendChild(readBtn);
+        readBtn.addEventListener("click", () =>{
+            readChange(book.id)
+        });
 
         const removeBtn = createBookElement('button', 'remove-btn', 'remove');
         removeBtn.setAttribute('data-id', book.id);
@@ -199,6 +199,20 @@ function removeBook(bookId) {
     renderBooks()
 }
 
+
+function readChange(bookId){
+    const bookToRead = myLibrary.findIndex(book => book.id === bookId);
+    const read = myLibrary[bookToRead].read ;
+    console.log(read);
+
+    if (read === 'not') {
+        myLibrary[bookToRead].read = "yes";
+    } else {
+        myLibrary[bookToRead].read = "not";
+    }
+    
+    renderBooks()
+}
 
 renderBooks()
 
