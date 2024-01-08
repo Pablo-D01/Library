@@ -131,6 +131,8 @@ function renderBooks(){
 
         const singleBook = document.createElement('div');
         singleBook.setAttribute('data-id', book.id);
+        const btnGroup = document.createElement('div');
+        btnGroup.classList.add('btnGroup');
 
         const bookTitle = createBookElement('p', 'book-title', book.title);
         singleBook.appendChild(bookTitle);
@@ -138,7 +140,7 @@ function renderBooks(){
         const bookAuthor = createBookElement('p', 'book-author', book.author);
         singleBook.appendChild(bookAuthor);
 
-        const bookPages = createBookElement('p', 'book-pages', book.pages);
+        const bookPages = createBookElement('p', 'book-pages', book.pages +' pages');
         singleBook.appendChild(bookPages);
 
         // const bookRead = createBookElement('p', 'book-read', book.read);
@@ -147,6 +149,7 @@ function renderBooks(){
 
         singleBook.classList.add('singleBook');
         bookContainer.appendChild(singleBook);
+        singleBook.appendChild(btnGroup);
 
         const readBtn = createBookElement('button', 'read-btn', readOrNo(book.read));
         readBtn.setAttribute('data-id', book.id);
@@ -162,6 +165,10 @@ function renderBooks(){
             removeBook(book.id)
         });
         readColor(book.id);
+
+        btnGroup.appendChild(readBtn)
+        btnGroup.appendChild(removeBtn)
+
     }
     
 
@@ -221,11 +228,11 @@ function readColor(btnId) {
     
     if (button) {
         if (button.innerHTML.toLowerCase() === 'read') {
-            button.classList.add("notRead");
-            button.classList.remove("read");
-        } else {
             button.classList.remove("notRead");
             button.classList.add("read");
+        } else {
+            button.classList.add("notRead");
+            button.classList.remove("read");
         }
 
     } else {
