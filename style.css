@@ -6,7 +6,7 @@
   body {
     margin: 0;
     font-family: Poppins, sans-serif;;
-    overflow: hidden;
+    
   }
 
   
@@ -79,6 +79,14 @@ header{
     overflow: hidden;
   
 }
+.singleBook button{
+  width: 80%;
+  border-radius: 10px;
+  transition:  0.15s ease-in-out;
+  border: none;
+  cursor: pointer;
+}
+
 .modal{
   opacity: 0;
   transform: translate(-50%, -50%) scale(0.8);
@@ -214,4 +222,19 @@ select:focus {
 
 .overlay.active {
   display: block;
+}
+
+.remove-btn, .read-btn{
+  font-size: 1em;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  
+}
+
+.read{
+  background-color: #9FFF9C;
+}
+.notRead{
+  background-color: #FF9C9C;
 }

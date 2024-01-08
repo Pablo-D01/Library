@@ -141,9 +141,9 @@ function renderBooks(){
         const bookPages = createBookElement('p', 'book-pages', book.pages);
         singleBook.appendChild(bookPages);
 
-        const bookRead = createBookElement('p', 'book-read', book.read);
-        bookRead.textContent = readOrNo(book.read)
-        singleBook.appendChild(bookRead);
+        // const bookRead = createBookElement('p', 'book-read', book.read);
+        // bookRead.textContent = readOrNo(book.read)
+        // singleBook.appendChild(bookRead);
 
         singleBook.classList.add('singleBook');
         bookContainer.appendChild(singleBook);
@@ -155,13 +155,16 @@ function renderBooks(){
             readChange(book.id)
         });
 
-        const removeBtn = createBookElement('button', 'remove-btn', 'remove');
+        const removeBtn = createBookElement('button', 'remove-btn', 'Remove');
         removeBtn.setAttribute('data-id', book.id);
         singleBook.appendChild(removeBtn);
         removeBtn.addEventListener("click", () =>{
             removeBook(book.id)
         });
+        readColor(book.id);
     }
+    
+
 };
 
 
@@ -203,15 +206,31 @@ function removeBook(bookId) {
 function readChange(bookId){
     const bookToRead = myLibrary.findIndex(book => book.id === bookId);
     const read = myLibrary[bookToRead].read ;
-    console.log(read);
-
+    const id = bookId;
     if (read === 'not') {
         myLibrary[bookToRead].read = "yes";
     } else {
         myLibrary[bookToRead].read = "not";
+
     }
+    renderBooks();
+}
+
+function readColor(btnId) {
+    const button = document.querySelector(`button.read-btn[data-id="${btnId}"]`);
     
-    renderBooks()
+    if (button) {
+        if (button.innerHTML.toLowerCase() === 'read') {
+            button.classList.add("notRead");
+            button.classList.remove("read");
+        } else {
+            button.classList.remove("notRead");
+            button.classList.add("read");
+        }
+
+    } else {
+        console.error('Button not found');
+    }
 }
 
 renderBooks()
