@@ -58,6 +58,7 @@ header{
     /* grid-template-columns: 1fr 1fr; */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: auto;
+    justify-content: center
 }
 
   
@@ -248,3 +249,20 @@ select:focus {
 .notRead{
   background-color: #FF9C9C;
 }
+
+@media only screen and (max-width: 930px) {
+  .modal h2 {
+    font-size: 90%;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .modal h2 {
+      font-size: 80%;
+    }
+  }
+@media only screen and (max-width: 600px) {
+  .modal  {
+      font-size: 1em;
+      width: auto;
+    }
+  }
