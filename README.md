@@ -3,4 +3,5 @@ The "Library" application is a library management system that enables users to a
 
 # DEMO
 <a href="https://pablo-d01.github.io/Library/"> LIBRARY DEMO</a>
-![image](https://github.com/Pablo-D01/Library/assets/84712862/b2d5254d-785b-44fb-af8e-142885072e4c)
+![image](https://github.com/Pablo-D01/Library/assets/84712862/93033dd8-cfd3-4768-bc64-a7ed6dd83174)
+
