@@ -11,41 +11,14 @@ bookForm.addEventListener("submit", function (event) {
 });
 
 let myLibrary = [
-  {
-    id: 1,
-    title: "The Hobbit",
-    author: "J.R.R. Tolkien",
-    pages: "295",
-    read: "not",
-    info: function () {
-      console.log(
-        this.title,
-        "by",
-        this.author,
-        ",",
-        this.pages,
-        "pages,",
-        this.read
-      );
-      // console.log;(this.title)
-    },
-  },
+  //   {
+  //     id: 1,
+  //     title: "The Hobbit",
+  //     author: "J.R.R. Tolkien",
+  //     pages: "295",
+  //     read: "not",
+  //   },
 ];
-
-/* let  myLibrary = [
- 
-]; */
-
-/* function Book(id,title, author, pages, read) {
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function() {
-        console.log(this.title,'by',this.author,',', this.pages,'pages,', this.read)
-    };
-  }; */
 
 class Book {
   constructor(id, title, author, pages, read) {
@@ -55,20 +28,12 @@ class Book {
     this.pages = pages;
     this.read = read;
   }
-  info() {
-    console.log(
-      console.log(
-        this.title,
-        "by",
-        this.author,
-        ",",
-        this.pages,
-        "pages,",
-        this.read
-      )
-    );
+  get info() {
+    return `${this.title} by ${this.author}, ${this.pages} pages, already read?: ${this.read}`;
   }
 }
+
+myLibrary.push(new Book(1, "The Hobbit", "J.R.R. Tolkien", "295", "not"));
 
 /*  new Book(1,'The Hobbit','J.R.R. Tolkien','295','not');
   const firstBook = new Book(1,'The Hobbit','J.R.R. Tolkien','295','not');
@@ -81,7 +46,8 @@ function addBookToLibrary() {
   const read = document.getElementById("read").value.toLowerCase();
   const id = myLibrary.length + 1;
   const newBook = new Book(id, title, author, pages, read);
-  myLibrary.push(newBook);
+  //   myLibrary.push(newBook);
+  myLibrary.push(new Book(id, title, author, pages, read));
 }
 
 submitButton.addEventListener("click", function () {
